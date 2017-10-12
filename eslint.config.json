@@ -5,6 +5,9 @@
     "node": true,
     "jquery": true
   },
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "quotes": 0,
     "no-trailing-spaces": 0,
@@ -17,5 +20,16 @@
   "globals": {
     "jQuery": true,
     "$": true
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "15.0",
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps"
+    ]
   }
 }
