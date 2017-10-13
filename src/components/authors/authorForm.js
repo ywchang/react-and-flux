@@ -1,6 +1,7 @@
 var React = require("react");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
+var Input = require("../common/textInput");
 
 var AuthorForm = createReactClass({
 	propTypes: {
@@ -12,26 +13,20 @@ var AuthorForm = createReactClass({
 		return (
 			<form>
 				<h1>Add Author</h1>
-				<label htmlFor="firstName">First Name</label>
-				<input
-					type="text"
+				<Input
 					name="firstName"
-					className="form-control"
 					placeholder="First Name"
 					value={this.props.author.firstName}
 					onChange={this.props.onChange}
+					label="First Name"
 				/>
-				<br />
-				<label htmlFor="lastName">Last Name</label>
-				<input
-					type="text"
+				<Input
 					name="lastName"
-					className="form-control"
 					placeholder="Last Name"
 					value={this.props.author.lastName}
 					onChange={this.props.onChange}
+					label="Last Name"
 				/>
-				<br />
 				<input type="submit" value="Save" className="btn btn-default" />
 			</form>
 		);
