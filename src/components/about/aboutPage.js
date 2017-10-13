@@ -2,6 +2,7 @@
 
 var React = require("react");
 var createReactClass = require("create-react-class");
+var Prompt = require('react-router-dom').Prompt;
 
 var About = createReactClass({
 	render: function() {
@@ -20,6 +21,7 @@ var About = createReactClass({
 						<li>Bootstrap</li>
 					</ul>
 				</div>
+				<Prompt when={true} message="Are you sure to leave?" />
 			</div>
 		);
 	}
