@@ -14,6 +14,7 @@ ReactDOM.render(
 			<Route exact path="/" component={App} />
 			<Route path="/authors" component={App} />
 			<Route path="/about" component={App} />
+			<Route path="/add-author" component={App} />
 			<Redirect from="/about-us" to="/about" />
 			<Route component={NotFoundPage} />
 		</Switch>
