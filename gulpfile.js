@@ -30,6 +30,7 @@ gulp.task("connect", function() {
         root: ["dist"],
         port: config.port,
         base: config.devBaseUrl,
+        fallback: 'dist/index.html',
         livereload: true
     });
 });
