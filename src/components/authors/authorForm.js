@@ -7,7 +7,8 @@ var AuthorForm = createReactClass({
 	propTypes: {
 		author: PropTypes.object.isRequired,
 		onChange: PropTypes.func.isRequired,
-		onSave: PropTypes.func.isRequired
+		onSave: PropTypes.func.isRequired,
+		errors: PropTypes.object.isRequired
 	},
 
 	render: function() {
@@ -20,6 +21,7 @@ var AuthorForm = createReactClass({
 					value={this.props.author.firstName}
 					onChange={this.props.onChange}
 					label="First Name"
+					error={this.props.errors.firstName}
 				/>
 				<Input
 					name="lastName"
@@ -27,6 +29,7 @@ var AuthorForm = createReactClass({
 					value={this.props.author.lastName}
 					onChange={this.props.onChange}
 					label="Last Name"
+					error={this.props.errors.lastName}
 				/>
 				<input
 					type="submit"

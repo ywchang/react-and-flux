@@ -18,7 +18,8 @@ var config = {
         favicon: "./src/favicon.ico",
         css: [
             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-            "node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+            "node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
+            "node_modules/toastr/build/toastr.min.css"
         ],
         mainJs: "./src/main.js",
         dist: "./dist"
@@ -30,7 +31,7 @@ gulp.task("connect", function() {
         root: ["dist"],
         port: config.port,
         base: config.devBaseUrl,
-        fallback: 'dist/index.html',
+        fallback: "dist/index.html",
         livereload: true
     });
 });
@@ -73,7 +74,7 @@ gulp.task("images", function() {
         .src(config.paths.images)
         .pipe(gulp.dest(config.paths.dist + "/images"))
         .pipe(connect.reload());
-        
+
     gulp
         .src(config.paths.favicon)
         .pipe(gulp.dest(config.paths.dist))
