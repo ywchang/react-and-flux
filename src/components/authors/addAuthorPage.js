@@ -1,8 +1,14 @@
 var React = require("react");
 var createReactClass = require("create-react-class");
 var AuthorForm = require("./authorForm");
+var AuthorApi = require("../../api/authorApi");
+var PropTypes = require("prop-types");
 
 var AddAuthorPage = createReactClass({
+	propTypes: {
+		history: PropTypes.object.isRequired
+	},
+
 	getInitialState: function() {
 		return {
 			author: {
@@ -22,11 +28,18 @@ var AddAuthorPage = createReactClass({
 		});
 	},
 
+	saveAuthor: function(event) {
+		event.preventDefault();
+		AuthorApi.saveAuthor(this.state.author);
+		this.props.history.push("/authors");
+	},
+
 	render: function() {
 		return (
 			<AuthorForm
 				author={this.state.author}
 				onChange={this.setAuthorState}
+				onSave={this.saveAuthor}
 			/>
 		);
 	}

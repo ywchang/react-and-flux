@@ -6,7 +6,8 @@ var Input = require("../common/textInput");
 var AuthorForm = createReactClass({
 	propTypes: {
 		author: PropTypes.object.isRequired,
-		onChange: PropTypes.func.isRequired
+		onChange: PropTypes.func.isRequired,
+		onSave: PropTypes.func.isRequired
 	},
 
 	render: function() {
@@ -27,7 +28,12 @@ var AuthorForm = createReactClass({
 					onChange={this.props.onChange}
 					label="Last Name"
 				/>
-				<input type="submit" value="Save" className="btn btn-default" />
+				<input
+					type="submit"
+					value="Save"
+					className="btn btn-default"
+					onClick={this.props.onSave}
+				/>
 			</form>
 		);
 	}
