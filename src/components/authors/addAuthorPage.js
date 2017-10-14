@@ -62,6 +62,10 @@ var AddAuthorPage = createReactClass({
 		this.props.history.push("/authors");
 	},
 
+	hasUnsavedData: function() {
+		return !!this.state.author.firstName || !!this.state.author.lastName;
+	},
+
 	render: function() {
 		return (
 			<AuthorForm
@@ -69,6 +73,7 @@ var AddAuthorPage = createReactClass({
 				onChange={this.setAuthorState}
 				onSave={this.saveAuthor}
 				errors={this.state.errors}
+				hasUnsavedData={this.hasUnsavedData()}
 			/>
 		);
 	}
