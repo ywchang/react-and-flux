@@ -6,6 +6,7 @@ var HomePage = require("./homePage");
 var AboutPage = require("./about/aboutPage");
 var AuthorPage = require("./authors/authorPage");
 var ManageAuthorPage = require("./authors/manageAuthorPage");
+var Switch = require("react-router-dom").Switch;
 var Route = require("react-router-dom").Route;
 var Redirect = require("react-router-dom").Redirect;
 
@@ -30,17 +31,19 @@ var App = createReactClass({
 			<div>
 				<Header />
 				<div className="container-fluid">
-					<Route exact path="/" component={HomePage} />
-					<Route path="/authors" component={AuthorPage} />
-					<Route path="/author" component={ManageAuthorPage} />
-					<Route
-						path="/author/:authorId"
-						component={ManageAuthorPage}
-					/>
-					<Route
-						path="/about"
-						render={proceedOrGobackAboutPage.bind(this)}
-					/>
+					<Switch>
+						<Route exact path="/" component={HomePage} />
+						<Route path="/authors" component={AuthorPage} />
+						<Route exact path="/author" component={ManageAuthorPage} />
+						<Route
+							path="/author/:authorId"
+							component={ManageAuthorPage}
+						/>
+						<Route
+							path="/about"
+							render={proceedOrGobackAboutPage.bind(this)}
+						/>
+					</Switch>
 				</div>
 			</div>
 		);

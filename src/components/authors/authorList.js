@@ -3,6 +3,7 @@
 var React = require("react");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
+var Link = require('react-router-dom').Link;
 
 var AuthorList = createReactClass({
 	propTypes: {
@@ -14,7 +15,7 @@ var AuthorList = createReactClass({
 			return (
 				<tr key={author.id}>
 					<td>
-						<a href={"/author/" + author.id}>{author.id}</a>
+						<Link to={"/author/" + author.id}>{author.id}</Link>
 					</td>
 					<td>
 						{author.firstName} {author.lastName}

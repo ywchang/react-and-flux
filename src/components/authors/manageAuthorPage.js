@@ -7,7 +7,8 @@ var toastr = require("toastr");
 
 var ManageAuthorPage = createReactClass({
 	propTypes: {
-		history: PropTypes.object.isRequired
+		history: PropTypes.object.isRequired,
+		match: PropTypes.object.isRequired
 	},
 
 	getInitialState: function() {
@@ -19,6 +20,23 @@ var ManageAuthorPage = createReactClass({
 			},
 			errors: {}
 		};
+	},
+
+	componentWillMount: function() {
+		if (this.props.match.params.authorId) {
+			var author = AuthorApi.getAuthorById(
+				this.props.match.params.authorId
+			);
+			if (author.firstName && author.lastName) {
+				this.setState({
+					author: {
+						id: author.id,
+						firstName: author.firstName,
+						lastName: author.lastName
+					}
+				});
+			}
+		}
 	},
 
 	setAuthorState: function(event) {
