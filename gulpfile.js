@@ -7,6 +7,7 @@ var reactify = require("reactify");
 var source = require("vinyl-source-stream");
 var concat = require("gulp-concat");
 var lint = require("gulp-eslint");
+var historyApiFallback = require("connect-history-api-fallback");
 
 var config = {
     port: 9005,
@@ -31,8 +32,10 @@ gulp.task("connect", function() {
         root: ["dist"],
         port: config.port,
         base: config.devBaseUrl,
-        fallback: "dist/index.html",
-        livereload: true
+        livereload: true,
+        middleware: function(connect, op) {
+            return [historyApiFallback()];
+        }
     });
 });
 
