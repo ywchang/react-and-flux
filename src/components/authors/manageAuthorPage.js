@@ -5,7 +5,7 @@ var AuthorApi = require("../../api/authorApi");
 var PropTypes = require("prop-types");
 var toastr = require("toastr");
 
-var AddAuthorPage = createReactClass({
+var ManageAuthorPage = createReactClass({
 	propTypes: {
 		history: PropTypes.object.isRequired
 	},
@@ -58,8 +58,10 @@ var AddAuthorPage = createReactClass({
 			return;
 		}
 		AuthorApi.saveAuthor(this.state.author);
-		toastr.success("Author saved!");
-		this.props.history.push("/authors");
+		this.setState({ author: {} }, function() {
+			toastr.success("Author saved!");
+			this.props.history.push("/authors");
+		});
 	},
 
 	hasUnsavedData: function() {
@@ -79,4 +81,4 @@ var AddAuthorPage = createReactClass({
 	}
 });
 
-module.exports = AddAuthorPage;
+module.exports = ManageAuthorPage;

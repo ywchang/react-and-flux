@@ -17,7 +17,7 @@ var AuthorForm = createReactClass({
 		return (
 			<div>
 				<form>
-					<h1>Add Author</h1>
+					<h1>Manage Author</h1>
 					<Input
 						name="firstName"
 						placeholder="First Name"
@@ -41,7 +41,10 @@ var AuthorForm = createReactClass({
 						onClick={this.props.onSave}
 					/>
 				</form>
-				<Prompt when={this.props.hasUnsavedData} message="Leave without saving?" />
+				<Prompt
+					when={this.props.hasUnsavedData}
+					message="Leave without saving?"
+				/>
 			</div>
 		);
 	}
