@@ -7,6 +7,9 @@ var Switch = require("react-router-dom").Switch;
 var Redirect = require("react-router-dom").Redirect;
 var App = require("./components/app");
 var NotFoundPage = require("./components/notFoundPage");
+var InitializeActions = require("./actions/initializeActions");
+
+InitializeActions.initialize();
 
 ReactDOM.render(
 	<BrowserRouter>

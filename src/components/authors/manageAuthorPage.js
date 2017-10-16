@@ -1,7 +1,10 @@
+"use strict";
+
 var React = require("react");
 var createReactClass = require("create-react-class");
 var AuthorForm = require("./authorForm");
-var AuthorApi = require("../../api/authorApi");
+var AuthorActions = require("../../actions/authorActions");
+var AuthorStore = require("../../stores/authorStore");
 var PropTypes = require("prop-types");
 var toastr = require("toastr");
 
@@ -24,7 +27,7 @@ var ManageAuthorPage = createReactClass({
 
 	componentWillMount: function() {
 		if (this.props.match.params.authorId) {
-			var author = AuthorApi.getAuthorById(
+			var author = AuthorStore.getAuthorById(
 				this.props.match.params.authorId
 			);
 			if (author.firstName && author.lastName) {
@@ -75,8 +78,8 @@ var ManageAuthorPage = createReactClass({
 		if (!this.isAuthorValid()) {
 			return;
 		}
-		AuthorApi.saveAuthor(this.state.author);
-		this.setState({ author: {} }, function() {
+		AuthorActions.createAuthor(this.state.author);
+		this.setState({ author: { firstName: "", lastName: "" } }, function() {
 			toastr.success("Author saved!");
 			this.props.history.push("/authors");
 		});
