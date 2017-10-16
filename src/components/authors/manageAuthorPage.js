@@ -78,7 +78,12 @@ var ManageAuthorPage = createReactClass({
 		if (!this.isAuthorValid()) {
 			return;
 		}
-		AuthorActions.createAuthor(this.state.author);
+		if (this.state.author.id) {
+			AuthorActions.updateAuthor(this.state.author);
+		} else {
+			AuthorActions.createAuthor(this.state.author);
+		}
+
 		this.setState({ author: { firstName: "", lastName: "" } }, function() {
 			toastr.success("Author saved!");
 			this.props.history.push("/authors");
