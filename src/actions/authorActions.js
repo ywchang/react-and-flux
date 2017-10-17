@@ -18,7 +18,15 @@ var AuthorActions = {
 		Dispatcher.dispatch({
 			actionType: ActionTypes.UPDATE_AUTHOR,
 			author: updatedAuthor
-		});	
+		});
+	},
+
+	deleteAuthor: function(authorId) {
+		AuthorApi.deleteAuthor(authorId);
+		Dispatcher.dispatch({
+			actionType: ActionTypes.DELETE_AUTHOR,
+			authorId: authorId
+		});
 	}
 };
 

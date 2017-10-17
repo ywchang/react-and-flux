@@ -3,11 +3,12 @@
 var React = require("react");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
-var Link = require('react-router-dom').Link;
+var Link = require("react-router-dom").Link;
 
 var AuthorList = createReactClass({
 	propTypes: {
-		authors: PropTypes.array.isRequired
+		authors: PropTypes.array.isRequired,
+		onDelete: PropTypes.func.isRequired
 	},
 
 	render: function() {
@@ -20,6 +21,15 @@ var AuthorList = createReactClass({
 					<td>
 						{author.firstName} {author.lastName}
 					</td>
+					<td>
+						<button
+							onClick={function(event) {
+								this.props.onDelete(author.id, event);
+							}.bind(this)}
+						>
+							Delete
+						</button>
+					</td>
 				</tr>
 			);
 		};
@@ -31,6 +41,7 @@ var AuthorList = createReactClass({
 						<tr>
 							<th>ID</th>
 							<th>Name</th>
+							<th>Actions</th>
 						</tr>
 						{this.props.authors.map(createAuthorRow, this)}
 					</tbody>
